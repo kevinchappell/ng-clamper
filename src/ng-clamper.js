@@ -97,7 +97,7 @@ angular.module('ng-clamper', [])
       scope.ngModel.clamped = !scope.ngModel.clamped;
     }
 
-  }, 0);
+  }, 100);
 
 }])
 

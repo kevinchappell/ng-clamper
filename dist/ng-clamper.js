@@ -1,6 +1,6 @@
 /*
 ng-clamper - git@github.com:kevinchappell/ng-clamper.git
-Version: 0.0.1
+Version: 0.1.0
 Author: Kevin Chappell <kevin.b.chappell@gmail.com>
 */
 angular.module('ng-clamper', [])
@@ -102,7 +102,7 @@ angular.module('ng-clamper', [])
       scope.ngModel.clamped = !scope.ngModel.clamped;
     }
 
-  }, 0);
+  }, 100);
 
 }])
 
