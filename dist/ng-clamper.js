@@ -18,7 +18,7 @@ angular.module('ng-clamper', [])
   };
 })
 
-.controller('clamperCtrl', function ($scope, $element) {
+.controller('clamperCtrl', ['$scope', '$element', function clamperCtrl($scope, $element) {
   'use strict';
 
   var clamper = this,
@@ -83,7 +83,7 @@ angular.module('ng-clamper', [])
     }
   }
 
-})
+}])
 
 .directive('clampToggle', function () {
 	'use strict' ;
@@ -97,7 +97,7 @@ angular.module('ng-clamper', [])
   };
 })
 
-.controller('clampToggleCtrl', function ($scope, $element) {
+.controller('clampToggleCtrl', ['$scope', '$element', function ($scope, $element) {
 	'use strict';
 
   var element = $element,
@@ -116,6 +116,6 @@ angular.module('ng-clamper', [])
     scope.ngModel.clampOpen = !scope.ngModel.clampOpen;
 
   }
-})
+}])
 
 ;
