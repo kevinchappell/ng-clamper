@@ -10,7 +10,7 @@ angular.module('ng-clamper', [])
 
   return {
     scope: {
-      ngModel: '=clamper',
+      ngModel: '=ngModel',
       text: '=text'
     },
     restrict: 'C',
@@ -49,7 +49,6 @@ angular.module('ng-clamper', [])
     scope.$watch('text', updateClamp);
 
     function updateClamp() {
-      console.log('updateClamp');
       var end = scope.ngModel.end || '&hellip;',
         maxLines = parseInt(scope.ngModel.clamp, 10),
         lineHeight = window.getComputedStyle(element[0], null).getPropertyValue('line-height').replace('px', ''),
