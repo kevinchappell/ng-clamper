@@ -1,0 +1,30 @@
+{
+	"name": "ng-clamper",
+	"version": "0.0.1",
+	"main": [
+		"dist/*"
+	],
+	"description": "Cross-browser line clamping with toggle option.",
+	"authors": [
+		"Kevin Chappell <kevin.b.chappell@gmail.com>"
+	],
+	"keywords": [
+		"line clamp",
+		"line clamper",
+		"line-clamp"
+	],
+	"license": "MIT",
+	"moduleType": [
+		"angularjs"
+	],
+	"ignore": [
+		"**/.*",
+		"gulpfile.js",
+		"karma.conf.js",
+		"package.json",
+		"params.json",
+		"src",
+		"test",
+		"node_modules"
+	]
+}
