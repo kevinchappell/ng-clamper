@@ -22,7 +22,7 @@ angular.module('app', [
 		};
 		I18NProvider.config(i18nConfig);
 	})
-	.controller('AppController', function AppCtrl($interval, $rootScope, $sce, $filter) {
+	.controller('AppController', ['$interval', '$rootScope', '$sce', '$filter', function AppCtrl($interval, $rootScope, $sce, $filter) {
 		var app = this;
 		app.loaded = true;
 		app.author = 'Kevin Chappell';
@@ -30,9 +30,10 @@ angular.module('app', [
 		app.maintainedBy = $sce.trustAsHtml($filter('i18n')('maintainedBy'));
 		app.hotdogCount = 3;
 		app.introClamp = {
-			lines: 3,
+			clamp: 3,
 			toggle: true,
-			symbol: '&hellip;'
+			end: '&hellip;',
+			text: $filter('i18n')('usage.intro')
 		};
 		app.secondsSinceOpen = 0;
 		app.date = function() {
@@ -44,7 +45,7 @@ angular.module('app', [
 			app.secondsSinceOpen++;
 		}, 1000);
 
-	});
+	}]);
 
 
 // Boiler plate language selector
@@ -58,7 +59,7 @@ angular.module('ngI18nLangSelect', ['ngI18n'])
 			controller: 'LangSelectController as LangSelectCtrl'
 		};
 	})
-	.controller('LangSelectController', function LangSelectCtrl(I18N, $document, $filter) {
+	.controller('LangSelectController', ['I18N', '$document', '$filter', function LangSelectCtrl(I18N, $document, $filter) {
 		var langSelect = this,
 			toast = function(text) {
 				var body = $document.find('body').eq(0),
@@ -72,4 +73,4 @@ angular.module('ngI18nLangSelect', ['ngI18n'])
 				toast($filter('i18n')('toast.loaded', lang.name));
 			});
 		};
-	});
+	}]);

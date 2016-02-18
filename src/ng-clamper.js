@@ -5,11 +5,12 @@ angular.module('ng-clamper', [])
 
   return {
     scope: {
-      ngModel: '=clamper',
-      text: '='
+      ngModel: '=clamper'
     },
+    // transclude: true,
     restrict: 'C',
     controller: 'clamperCtrl as clamper'
+    // ,template: '<clamp-toggle></clamp-toggle>'
   };
 })
 
@@ -19,6 +20,8 @@ angular.module('ng-clamper', [])
   var clamper = this,
     element = $element,
     scope = $scope;
+
+    scope.text = scope.ngModel.text || element.text();
 
   // strTruncate will shorten a string to a given length.
   // If substr cuts a word, it will find the last space and cut from there to respect word boundary.
@@ -72,9 +75,9 @@ angular.module('ng-clamper', [])
     trimLoop(text);
 
     if (scope.ngModel.clampOpen) {
-      element.css('max-height', '999px');
+      element.css({'max-height': '999px', 'overflow':'auto'});
     } else {
-      element.css('max-height', clampHeight().closed + 'px');
+      element.css({'max-height': clampHeight().closed + 'px', 'overflow':'hidden'});
     }
   }
 
