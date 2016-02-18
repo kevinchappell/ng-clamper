@@ -22,7 +22,7 @@ angular.module('app', [
 		};
 		I18NProvider.config(i18nConfig);
 	})
-	.controller('AppController', ['$interval', '$rootScope', '$sce', '$filter', function AppCtrl($interval, $rootScope, $sce, $filter) {
+	.controller('AppController', ['$interval', '$rootScope', '$sce', '$filter', 'I18N', function AppCtrl($interval, $rootScope, $sce, $filter, I18N) {
 		var app = this;
 		app.loaded = true;
 		app.author = 'Kevin Chappell';
@@ -32,8 +32,7 @@ angular.module('app', [
 		app.introClamp = {
 			clamp: 3,
 			toggle: true,
-			end: '&hellip;',
-			text: $filter('i18n')('usage.intro')
+			end: '&hellip;'
 		};
 		app.secondsSinceOpen = 0;
 		app.date = function() {
