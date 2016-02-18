@@ -19,4 +19,4 @@ label.directive = Directive
 text.stringInFile = String in language file
 label.outputs = Outputs
 toast.loaded = {language} was loaded
-text.donate = If ng-i18n helped you in your project please consider a donation. All proceeds go towards the purchase of coffee which in turn is converted to code.
+text.donate = If ng-clamper helped you in your project please consider a donation. All proceeds go towards the purchase of coffee which in turn is converted to code.
