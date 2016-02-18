@@ -1,8 +1,5 @@
-[![Code Climate](https://codeclimate.com/github/kevinchappell/ng-clamper/badges/gpa.svg)](https://codeclimate.com/github/kevinchappell/ng-clamper)
-[![Travis-CI](https://travis-ci.org/kevinchappell/ng-clamper.svg)](https://travis-ci.org/kevinchappell/ng-clamper)
-[![Test Coverage](https://codeclimate.com/github/kevinchappell/ng-clamper/badges/coverage.svg)](https://codeclimate.com/github/kevinchappell/ng-clamper/coverage)
 # ng-clamper #
-<em>v0.0.1</em>
+<em>v0.0.2</em>
 
 **Limit the number of lines displayed in a block.**
 With this handy directive you'll have an AngularJS, cross-browser way of limiting the text in any given block to a specified number of lines.
@@ -16,7 +13,7 @@ Toggle option
 ## Installation
 1. Add `ng-clamper.min.js` with script tag or through build process.
   2. Also available as a Bower component `bower install ng-clamper`
-2. Inject ngI18N into your app and configure language file location.
+2. Inject ng-clamper into your app.
 3. Check out the [demo](http://kevinchappell.github.io/ng-clamper/) for install and implementation options.
 
 ## No Blockers
