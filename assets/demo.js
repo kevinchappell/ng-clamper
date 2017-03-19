@@ -1,9 +1,4 @@
-'use strict';
-
-angular.module('app', [
-	'ngSanitize',
-  'ng-clamper'
-])
+angular.module('app', ['ng-clamper'])
 
 .controller('AppController', ['$rootScope', '$scope', function AppCtrl($rootScope, $scope) {
 	var app = this;
