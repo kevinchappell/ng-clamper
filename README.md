@@ -1,4 +1,6 @@
 # ng-clamper #
+
+[![Join the chat at https://gitter.im/kevinchappell/ng-clamper](https://badges.gitter.im/kevinchappell/ng-clamper.svg)](https://gitter.im/kevinchappell/ng-clamper?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 <em>v0.0.2</em>
 
 **Limit the number of lines displayed in a block.**
