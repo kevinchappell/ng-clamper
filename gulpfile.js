@@ -7,7 +7,7 @@ var gulp         = require('gulp'),
     sass         = require('gulp-sass'),
     gzip         = require('gulp-gzip'),
     cssmin       = require('gulp-cssmin'),
-    jshint       = require('gulp-jshint'),
+    eslint       = require('gulp-eslint'),
     concat       = require('gulp-concat'),
     ugly         = require('gulp-uglify'),
     header       = require('gulp-header'),
@@ -16,6 +16,11 @@ var gulp         = require('gulp'),
     pkg          = require('./package.json'),
     tagVersion   = require('gulp-tag-version'),
     autoprefixer = require('gulp-autoprefixer');
+
+
+var karmaConfig = {
+  configFile: __dirname + '/karma.conf.js'
+};
 
 var files = {
   karma: [
@@ -68,22 +73,18 @@ gulp.task('css', function() {
 });
 
 gulp.task('karma', function (done) {
-  new karma.Server.start({
-    configFile: __dirname + '/karma.conf.js'
-  }, done);
+  new karma.Server.start(karmaConfig, done);
 });
 
 gulp.task('test', function (done) {
-  new karma.Server.start({
-    configFile: __dirname + '/karma.conf.js',
-    singleRun: true
-  }, done);
+  karmaConfig.singleRun = true;
+  new karma.Server.start(karmaConfig, done);
 });
 
 gulp.task('lint', function() {
   return gulp.src(files.js)
-    .pipe(jshint())
-    .pipe(jshint.reporter('jshint-stylish'));
+    .pipe(eslint())
+    .pipe(eslint.format());
 });
 
 gulp.task('js', function() {
@@ -152,6 +153,4 @@ gulp.task('deploy', function(){
   });
 });
 
-
-gulp.task('default', ['js', 'watch', 'karma']);
-gulp.task('demo', ['js', 'css', 'watch', 'serve']);
+gulp.task('default', ['js', 'css', 'watch', 'karma', 'serve']);

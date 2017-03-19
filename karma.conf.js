@@ -16,9 +16,7 @@ module.exports = function(config) {
     files: [
       'node_modules/angular/angular.js',
       'node_modules/angular-mocks/angular-mocks.js',
-      'src/ng-i18n-provider.js',
-      'src/ng-i18n-filter.js',
-      'src/ng-i18n-directive.js',
+      'src/ng-clamper.js',
       'test/**/*.spec.js'
     ],
 
@@ -51,7 +49,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Firefox'],
+    browsers: ['Chrome'],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits

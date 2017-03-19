@@ -4,14 +4,12 @@ describe('Line Clamp Directive', function() {
   var scope,
     lineClamp,
     mockTimeout,
-    html = '<span mj-clamp>This is a long test string.</span>';
+    html = '<span mj-clamp></span>';
 
 
-  beforeEach(module('app.components.line-clamp'));
-  beforeEach(module('app.common.spec-helper'));
+  beforeEach(module('ng-clamper'));
 
-  beforeEach(inject(function($rootScope, $controller, _SpecHelper_) {
-    var SpecHelper = _SpecHelper_;
+  beforeEach(inject(function($rootScope, $controller) {
     mockTimeout = angular.noop;
 
     scope = $rootScope.$new();
@@ -20,7 +18,7 @@ describe('Line Clamp Directive', function() {
       end: '&hellip;'
     };
 
-    lineClamp = $controller('lineClampCtrl', {
+    lineClamp = $controller('ClamperController', {
       $scope: scope,
       $element: angular.element(html),
       $timeout: mockTimeout
@@ -29,7 +27,6 @@ describe('Line Clamp Directive', function() {
   }));
 
   describe('truncate string', function() {
-
     it('should truncate the string', function() {
       var text = scope.ngModel.text;
       expect(text.length).toEqual(27);

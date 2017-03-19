@@ -9,48 +9,52 @@ angular.module('ng-clamper', [])
       text: '=text'
     },
     restrict: 'C',
-    controller: 'clamperCtrl as clamper'
+    controller: 'ClamperController as clamper'
   };
 })
 
-.controller('clamperCtrl', ['$scope', '$element', '$timeout', function clamperCtrl($scope, $element, $timeout) {
+.controller('ClamperController', function ClamperController($scope, $element, $timeout, $window) {
   'use strict';
 
+  /*eslint angular/controller-as-vm: [2,"clamper"]*/
+
   var clamper = this,
-    element = $element,
     scope = $scope;
 
-  var lineClamp = scope.ngModel.clamp;
+  // strTruncate will shorten a string to a given length.
+  // If substr cuts a word, it will find the last space and cut from there to respect word boundary.
+  clamper.strTruncate = function(text, n, end) {
+    var trim = text.length > n,
+      str = trim ? text.substr(0, n - 1) : text,
+      truncated = str.substring(0, Math.min(str.length, str.lastIndexOf(' ')));
+    return truncated + end;
+  };
 
-  $timeout(function() {
+  function getText(){
+    return scope.ngModel.text || scope.text || $element[0].textContent;
+  }
 
-    var text = scope.text || scope.ngModel.text || element.text();
-
-    // strTruncate will shorten a string to a given length.
-    // If substr cuts a word, it will find the last space and cut from there to respect word boundary.
-    clamper.strTruncate = function(text, n, end) {
-      var trim = text.length > n,
-        str = trim ? text.substr(0, n - 1) : text,
-        truncated = str.substring(0, Math.min(str.length, str.lastIndexOf(' ')));
-      return truncated + end;
-    };
-
-    scope.ngModel.clamped = false;
+  function setupClamper() {
+    scope.text = getText();
+    scope.ngModel.curClamp = scope.ngModel.clamp;
 
     // is it necessary to watch the clamp settings?
-    scope.$watch('ngModel', updateClamp, true);
-
-    // clamp should update whenever target text changes
-    scope.$watch('text', updateClamp);
+    scope.$watch('ngModel', function(newVal, oldVal){
+      if (newVal.clamp !== oldVal.clamp) {
+        scope.ngModel.curClamp = newVal.clamp;
+      }
+      updateClamp();
+    }, true);
 
     function updateClamp() {
+      var text = scope.text;
       var end = scope.ngModel.end || '&hellip;',
-        maxLines = parseInt(scope.ngModel.clamp, 10),
-        lineHeight = window.getComputedStyle(element[0], null).getPropertyValue('line-height').replace('px', ''),
+        maxLines = parseInt(scope.ngModel.curClamp, 10),
+        lineHeight = $window.getComputedStyle($element[0], null).getPropertyValue('line-height').replace('px', ''),
         clampHeight = function() {
           return {
-            current: element[0].clientHeight || element[0].offsetHeight,
-            closed: lineHeight * parseInt(scope.ngModel.clamp, 10)
+            current: $element[0].clientHeight || $element[0].offsetHeight,
+            closed: lineHeight * parseInt(scope.ngModel.curClamp, 10)
           };
         },
         lines = function() {
@@ -61,7 +65,7 @@ angular.module('ng-clamper', [])
         },
         trimLoop = function(text) {
           for (var i = text.length - 1; shouldClamp(); i--) {
-            element[0].innerHTML = clamper.strTruncate(text, i, end);
+            $element[0].innerHTML = clamper.strTruncate(text, i, end);
           }
         };
 
@@ -69,36 +73,35 @@ angular.module('ng-clamper', [])
         return;
       }
 
-      element[0].innerHTML = text;
+      $element[0].innerHTML = text;
 
-      if (scope.ngModel.clamped === false) {
+      if (!scope.ngModel.clamped) {
         scope.ngModel.clamped = shouldClamp();
       }
 
       trimLoop(text);
 
       if (scope.ngModel.clamped) {
-        element.css({ 'max-height': '999px', 'overflow': 'auto' });
+        $element.css({ 'max-height': '999px', 'overflow': 'auto' });
       } else {
-        element.css({ 'max-height': clampHeight().closed + 'px', 'overflow': 'hidden' });
+        $element.css({ 'max-height': clampHeight().closed + 'px', 'overflow': 'hidden' });
       }
     }
 
-    element.bind('click', function() {
+    $element.bind('click', function() {
       scope.$apply(doToggle);
     });
 
     function doToggle() {
       if (scope.ngModel.clamped) {
-        scope.ngModel.clamp = 1000;
+        scope.ngModel.curClamp = 1000;
       } else {
-        scope.ngModel.clamp = lineClamp;
+        scope.ngModel.curClamp = scope.ngModel.clamp;
       }
+
       scope.ngModel.clamped = !scope.ngModel.clamped;
     }
+  }
 
-  }, 200);
-
-}])
-
-;
+  $timeout(setupClamper, 0);
+});
