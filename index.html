@@ -34,9 +34,9 @@
           <span class='st_pinterest' displayText='Pinterest'></span>
           <span class='st_email' displayText='Email'></span>
         </div>
-        <a id="forkme_banner" href="https://github.com/kevinchappell/ng-clamper">{{ 'viewOnGithub' | i18n }}</a>
+        <a id="forkme_banner" href="https://github.com/kevinchappell/ng-clamper">View on Github</a>
         <h1 id="project_title">ng-clamper</h1>
-        <h2 id="project_tagline">{{ 'text.moduleDesc' | i18n }}</h2>
+        <h2 id="project_tagline">A module for cross-browser line clamping.</h2>
         <section id="downloads">
           <a class="zip_download_link" href="https://github.com/kevinchappell/ng-clamper/zipball/master">Download this project as a .zip file</a>
           <a class="tar_download_link" href="https://github.com/kevinchappell/ng-clamper/tarball/master">Download this project as a tar.gz file</a>
@@ -46,23 +46,23 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <lang-select></lang-select>
         <p class="badges">
           <a href="https://gitter.im/kevinchappell/ng-clamper?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://camo.githubusercontent.com/da2edb525cde1455a622c58c0effc3a90b9a181c/68747470733a2f2f6261646765732e6769747465722e696d2f4a6f696e253230436861742e737667" alt="Join the chat at https://gitter.im/kevinchappell/ng-clamper" data-canonical-src="https://badges.gitter.im/Join%20Chat.svg" style="max-width:100%;"></a>
         </p>
-        <h1><a id="ng-clamper" class="anchor" href="#ng-clamper" aria-hidden="true"><span class="octicon octicon-link"></span></a>{{ 'about' | i18n }}</h1>
-        <p>{{ 'text.moduleDescLong' | i18n }}</p>
-        <h3>{{ 'usage' | i18n }}</h3>
-        <p>{{ 'usage.intro' | i18n }}</p>
-        <h3>{{ 'label.example' | i18n }}</h3>
-        <p ng-model="app.introClamp" class="ng-clamper">{{ 'usage.example' | i18n }}</p>
+        <h1><a id="ng-clamper" class="anchor" href="#ng-clamper" aria-hidden="true"><span class="octicon octicon-link"></span></a>About this module</h1>
+        <p>ng-clamper adds cross-browser support for line clamping to your angular app.</p>
+        <h3>Usage</h3>
+        <p>To use ng-clamper you'll need to add the 'ng-clamper' class to the element you'd like clamped.</p>
+        <h3>Example</h3>
+        Clamp size: <input type="number" ng-model="app.clampSize">
+        <p ng-model="app.introClamp" class="ng-clamper">This is some long text to be clamped. Try clicking this paragraph to view the toggle action for clamped text. This is some long text to be clamped. Try clicking this paragraph to view the toggle action for clamped text. This is some long text to be clamped. Try clicking this paragraph to view the toggle action for clamped text. This is some long text to be clamped. Try clicking this paragraph to view the toggle action for clamped text. This is some long text to be clamped. Try clicking this paragraph to view the toggle action for clamped text. This is some long text to be clamped. Try clicking this paragraph to view the toggle action for clamped text. This is some long text to be clamped. Try clicking this paragraph to view the toggle action for clamped text. This is some long text to be clamped. Try clicking this paragraph to view the toggle action for clamped text.</p>
       </section>
     </div>
     <!-- FOOTER  -->
     <div id="footer_wrap" class="outer">
       <footer class="inner">
         <div class="donate-plea">
-          <p> {{ 'text.donate' | i18n }}</p>
+          <p> If ng-clamper helped you in your project please consider a donation. All proceeds go towards the purchase of coffee which in turn is converted to code.</p>
           <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
             <input type="hidden" name="cmd" value="_s-xclick">
             <input type="hidden" name="hosted_button_id" value="2SE6VQJFAQDK8">
@@ -70,14 +70,13 @@
             <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
           </form>
         </div>
-        <p class="copyright" ng-bind-html="app.maintainedBy | i18n"></p>
-        <p>{{ 'publishedWith' | i18n }}</p>
+        <p class="copyright">ng-clamper is maintained by <a href="https://twitter.com/kevinchappell">Kevin Chappell</a></p>
+        <p>Published with GitHub Pages</p>
       </footer>
     </div>
   </div>
   <script type="text/javascript" src="//code.angularjs.org/1.4.1/angular.min.js"></script>
   <script type="text/javascript" src="//code.angularjs.org/1.4.1/angular-sanitize.min.js"></script>
-  <script type="text/javascript" src="http://kevinchappell.github.io/ng-i18n/assets/ng-i18n.min.js"></script>
   <script type="text/javascript" src="assets/ng-clamper.min.js"></script>
   <script type="text/javascript" src="assets/demo.js"></script>
   <script>
