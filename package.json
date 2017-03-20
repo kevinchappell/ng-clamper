@@ -23,7 +23,8 @@
   ],
   "scripts": {
     "start": "node ./node_modules/gulp/bin/gulp.js",
-    "test": "gulp test"
+    "test": "gulp test",
+    "deploy": "git push origin $(git subtree split --prefix demo master):gh-pages --force"
   },
   "devDependencies": {
     "angular": "^1.4.3",

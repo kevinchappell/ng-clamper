@@ -1,5 +1,5 @@
-# ng-clamper #
-<em>v0.0.2</em>
+# ng-clamper
+*v0.1.0*
 
 **Limit the number of lines displayed in a block.**
 With this handy directive you'll have an AngularJS, cross-browser way of limiting the text in any given block to a specified number of lines.
