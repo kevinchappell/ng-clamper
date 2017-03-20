@@ -1,5 +1,7 @@
-# ng-clamper
+# ng-clamper [![Build Status](https://travis-ci.org/kevinchappell/ng-clamper.svg?branch=master)](https://travis-ci.org/kevinchappell/ng-clamper) [![Join the chat at https://gitter.im/kevinchappell/ng-clamper](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/kevinchappell/ng-clamper?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 *v0.1.0*
+
+
 
 **Limit the number of lines displayed in a block.**
 With this handy directive you'll have an AngularJS, cross-browser way of limiting the text in any given block to a specified number of lines.
@@ -17,6 +19,4 @@ Toggle option
 3. Check out the [demo](http://kevinchappell.github.io/ng-clamper/) for install and implementation options.
 
 ## No Blockers
-[![Join the chat at https://gitter.im/kevinchappell/ng-clamper](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/kevinchappell/ng-clamper?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
 Join the [chat](https://gitter.im/kevinchappell/ng-clamper) or open an [issue](https://github.com/kevinchappell/ng-clamper/issues/new). Let's get you unblocked.
