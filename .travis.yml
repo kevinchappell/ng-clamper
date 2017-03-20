@@ -4,7 +4,7 @@ node_js:
 
 addons:
   code_climate:
-    repo_token: cc2b7264e6f629ae268c6ed2f0959fb8cecc8e1a6f6e4dd2e4247a379a1c0ec5
+    repo_token: b5c3b6fe39b49d2f86b384a4a3af45e6394fc41162bb008ad05f741c9c5117b4
 
 before_install:
   - "export DISPLAY=:99.0"
@@ -14,7 +14,7 @@ after_script:
   - codeclimate-test-reporter < coverage/**/lcov.info
 
 env:
-  - TEST_SCOPE=angular_1.4.x
+  - TEST_SCOPE=angular_1.6.x
 
 notifications:
-  webhooks: https://webhooks.gitter.im/e/b3fad143b541daf56e89
+  webhooks: https://webhooks.gitter.im/e/45e7c0327284467c72d0
